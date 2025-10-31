@@ -24,6 +24,6 @@ export class RegisterUserDto implements RegisterUserData {
   @IsAlphanumeric()
   email: string;
 
-  @ApiProperty({ nullable: true })
+  @ApiProperty({ nullable: true, type: String })
   name?: string | undefined;
 }
