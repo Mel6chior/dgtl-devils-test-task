@@ -1,4 +1,4 @@
-import { UserEntity } from "src/core/entities/user/user";
+import { UserEntity } from "../../../../core/entities/user/user";
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
