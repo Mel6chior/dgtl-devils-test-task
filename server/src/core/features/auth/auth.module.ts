@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { DatabaseModule } from 'src/core/database/database.module';
+import { JwtConfigService } from '../../../libs/jwt/jwt.config.service';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { JwtConfigService } from '../../../libs/jwt/jwt.config.service';
 
 @Module({
   imports: [
@@ -16,5 +16,6 @@ import { JwtConfigService } from '../../../libs/jwt/jwt.config.service';
   ],
   providers: [AuthService, JwtConfigService],
   controllers: [AuthController],
+  exports: [JwtModule]
 })
 export class AuthModule {}

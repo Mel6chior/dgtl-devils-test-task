@@ -9,7 +9,7 @@ async function bootstrap() {
 
   const configService = app.get<ConfigService>(ConfigService);
 
-  const swaggerConfig = new DocumentBuilder().build();
+  const swaggerConfig = new DocumentBuilder().addBearerAuth().build();
   const swaggerDocument = () =>
     SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api', app, swaggerDocument);

@@ -11,6 +11,6 @@ export class UsersRepository extends CrudRepository<User> {
   }
 
   async findByEmail(email: string) {
-    return await this.repository.findOne({ where: { email } });
+    return await this.repository.findOne({ where: { email }, select: { passwordHash: true, id: true} });
   }
 }

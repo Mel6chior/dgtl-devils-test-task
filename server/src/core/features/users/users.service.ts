@@ -5,7 +5,7 @@ import { UsersRepository } from 'src/libs/type-orm/repositories/users.repository
 export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) {}
 
-  async myProfile(id: string){
+  async profile(id: string){
     return await this.usersRepository.findById(id);
   }
 }

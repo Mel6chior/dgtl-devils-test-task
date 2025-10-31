@@ -10,7 +10,7 @@ export class User extends TypeOrmEntity implements UserEntity {
   @Column({ unique: true })
   email: string;
 
-  @Column()
+  @Column({ select: false })
   passwordHash: string;
 
   @Column({ nullable: true })

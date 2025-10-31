@@ -2,8 +2,8 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { compare, genSalt, hash } from 'bcrypt';
 import { UsersRepository } from '../../../libs/type-orm/repositories/users.repository';
-import { LoginUserData, RegisterUserData } from '../../entities/user/user';
 import { ErrorMessage } from '../../const/error-message';
+import { LoginUserData, RegisterUserData } from '../../entities/user/user';
 
 @Injectable()
 export class AuthService {
@@ -39,6 +39,10 @@ export class AuthService {
     if (!isPasswordValid) {
       throw new UnauthorizedException(ErrorMessage.INVALID_EMAIL_OR_PASSWORD);
     }
+
+    const accessToken = await this.jwtService.signAsync({ id: user.id });
+
+    return accessToken;
   }
 
   private async hashPassword(password: string) {
