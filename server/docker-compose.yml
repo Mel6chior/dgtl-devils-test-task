@@ -12,5 +12,15 @@ services:
       - postgresql-data:/var/lib/postgresql/data
     restart: always
 
+  app:
+    build: .
+    ports:
+      - "3000:${PORT}"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: yarn start:dev
+    environment:
+      - NODE_ENV=development
 volumes:
   postgresql-data:
