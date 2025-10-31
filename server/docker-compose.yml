@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres
+    container_name: dgtl-devils-test-task
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:${POSTGRES_PORT}"
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  postgresql-data:
