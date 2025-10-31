@@ -1,12 +1,9 @@
 import { Logger } from "@nestjs/common";
 import { execSync } from "child_process";
 import { join } from "path";
+import { v4 } from "uuid";
 
-const migrationName = process.argv[2];
-if (!migrationName) {
-    Logger.error('Please provide a migration name');
-    process.exit(1);
-}
+const migrationName = v4();
 
 const migrationPath = join(process.cwd(), 'database/migrations/', migrationName);
 
