@@ -15,4 +15,5 @@ export interface RegisterUserData
   password: string;
 }
 
-export interface LoginUserData extends Pick<RegisterUserData, 'email' | 'password'> {}
+export interface LoginUserData
+  extends Pick<RegisterUserData, 'email' | 'password'> {}

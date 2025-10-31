@@ -1,5 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsAlphanumeric, IsEmail, IsString, IsStrongPassword } from 'class-validator';
+import {
+  IsAlphanumeric,
+  IsEmail,
+  IsString,
+  IsStrongPassword,
+} from 'class-validator';
 import { RegisterUserData } from 'src/core/entities/user/user';
 
 export class RegisterUserDto implements RegisterUserData {
@@ -9,7 +14,7 @@ export class RegisterUserDto implements RegisterUserData {
     minUppercase: 1,
     minLowercase: 1,
     minNumbers: 1,
-    minSymbols: 1, 
+    minSymbols: 1,
   })
   password: string;
 

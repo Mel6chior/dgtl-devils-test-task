@@ -15,7 +15,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
       database: this.configService.getOrThrow<string>('POSTGRES_DB'),
       username: this.configService.getOrThrow<string>('POSTGRES_USER'),
       password: this.configService.getOrThrow<string>('POSTGRES_PASSWORD'),
-      entities
+      entities,
     };
   }
 }

@@ -24,17 +24,20 @@ export class AuthService {
     return accessToken;
   }
 
-  async login({ email, password }: LoginUserData){
+  async login({ email, password }: LoginUserData) {
     const user = await this.usersRepository.findByEmail(email);
 
-    if (!user){
-        throw new UnauthorizedException(ErrorMessage.INVALID_EMAIL_OR_PASSWORD);
+    if (!user) {
+      throw new UnauthorizedException(ErrorMessage.INVALID_EMAIL_OR_PASSWORD);
     }
 
-    const isPasswordValid = await this.validatePassword(password, user.passwordHash);
+    const isPasswordValid = await this.validatePassword(
+      password,
+      user.passwordHash,
+    );
 
-    if (!isPasswordValid){
-        throw new UnauthorizedException(ErrorMessage.INVALID_EMAIL_OR_PASSWORD)
+    if (!isPasswordValid) {
+      throw new UnauthorizedException(ErrorMessage.INVALID_EMAIL_OR_PASSWORD);
     }
   }
 
@@ -44,7 +47,7 @@ export class AuthService {
     return await hash(password, salt);
   }
 
-  private async validatePassword(candidate: string, hash: string){
+  private async validatePassword(candidate: string, hash: string) {
     return await compare(candidate, hash);
   }
 }

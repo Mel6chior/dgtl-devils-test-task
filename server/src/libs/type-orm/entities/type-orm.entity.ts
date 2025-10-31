@@ -1,10 +1,10 @@
 import {
-    CreateDateColumn,
-    PrimaryGeneratedColumn,
-    UpdateDateColumn
+  CreateDateColumn,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
-export abstract class TypeOrmEntity  {
+export abstract class TypeOrmEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
