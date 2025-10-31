@@ -14,3 +14,5 @@ export interface RegisterUserData
   extends Omit<UserEntity, 'passwordHash' | GeneralFields> {
   password: string;
 }
+
+export interface LoginUserData extends Pick<RegisterUserData, 'email' | 'password'> {}

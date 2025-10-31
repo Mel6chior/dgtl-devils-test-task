@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { genSalt, hash } from 'bcrypt';
-import { RegisterUserData } from 'src/core/entities/user/user';
-import { UsersRepository } from 'src/libs/type-orm/repositories/users.repository';
+import { compare, genSalt, hash } from 'bcrypt';
+import { UsersRepository } from '../../../libs/type-orm/repositories/users.repository';
+import { LoginUserData, RegisterUserData } from '../../entities/user/user';
+import { ErrorMessage } from '../../const/error-message';
 
 @Injectable()
 export class AuthService {
@@ -23,9 +24,27 @@ export class AuthService {
     return accessToken;
   }
 
+  async login({ email, password }: LoginUserData){
+    const user = await this.usersRepository.findByEmail(email);
+
+    if (!user){
+        throw new UnauthorizedException(ErrorMessage.INVALID_EMAIL_OR_PASSWORD);
+    }
+
+    const isPasswordValid = await this.validatePassword(password, user.passwordHash);
+
+    if (!isPasswordValid){
+        throw new UnauthorizedException(ErrorMessage.INVALID_EMAIL_OR_PASSWORD)
+    }
+  }
+
   private async hashPassword(password: string) {
     const salt = await genSalt();
 
     return await hash(password, salt);
+  }
+
+  private async validatePassword(candidate: string, hash: string){
+    return await compare(candidate, hash);
   }
 }
