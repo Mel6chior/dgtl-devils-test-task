@@ -1,8 +1,8 @@
 import { ConfigService } from "@nestjs/config";
-import { DataSource } from "typeorm";
 import { config } from "dotenv";
-import { entities } from "../src/libs/typeorm/entities/";
 import { join } from "path";
+import { DataSource } from "typeorm";
+import { entities } from "../src/libs/type-orm/entities";
 
 config();
 

@@ -1,7 +1,9 @@
 export interface Entity {
-    id: string;
+  id: string;
 
-    createdAt: Date;
+  createdAt: Date;
 
-    updatedAt: Date;
+  updatedAt: Date;
 }
+
+export type GeneralFields = 'id' | 'createdAt' | 'updatedAt';

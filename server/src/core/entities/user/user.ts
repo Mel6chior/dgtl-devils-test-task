@@ -1,11 +1,16 @@
-import { Entity } from "..";
+import { Entity, GeneralFields } from '..';
 
 export interface UserEntity extends Entity {
-    login: string;
+  login: string;
 
-    email: string;
+  email: string;
 
-    passwordHash: string;
+  passwordHash: string;
 
-    name?: string;
+  name?: string;
+}
+
+export interface RegisterUserData
+  extends Omit<UserEntity, 'passwordHash' | GeneralFields> {
+  password: string;
 }
