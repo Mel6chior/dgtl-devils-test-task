@@ -10,12 +10,12 @@
     "generate-api": "openapi-ts"
   },
   "dependencies": {
+    "axios": "^1.13.1",
     "next": "16.0.1",
     "react": "19.2.0",
     "react-dom": "19.2.0"
   },
   "devDependencies": {
-    "@hey-api/openapi-ts": "^0.86.11",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
