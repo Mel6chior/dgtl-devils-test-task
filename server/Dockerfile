@@ -12,6 +12,9 @@ RUN yarn build
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-EXPOSE 5000
+ARG PORT=${PORT}
+ENV PORT=${PORT}
+
+EXPOSE ${PORT}
 
 ENTRYPOINT ["entrypoint.sh"]
