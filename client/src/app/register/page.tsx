@@ -1,9 +1,17 @@
-const Register = () => {
+import FormLayout from "../../components/FormLayout/FormLayout";
+
+const RegisterPage = () => {
   return (
     <>
-      <h1>Register</h1>
+      <FormLayout>
+        <input type="email" placeholder="Email" name="email"/>
+        <input type="text" placeholder="Login" name="login"/>
+        <input type="text" placeholder="Name" name="name"/>
+        <input type="password" placeholder="Password" name="password"/>
+        <button>Register</button>
+      </FormLayout>
     </>
   );
 };
 
-export default Register;
+export default RegisterPage;
