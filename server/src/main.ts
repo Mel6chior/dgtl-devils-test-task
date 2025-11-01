@@ -21,5 +21,5 @@ async function bootstrap() {
 
 bootstrap().catch((err) => {
   Logger.error(err);
-  process.exit(1);
+  throw err;
 });
