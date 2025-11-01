@@ -13,7 +13,7 @@ Logger.log(`Generating migration: ${migrationName}`);
 Logger.log(`Command: ${command}`);
 
 try {
-    execSync(command, { stdio: 'inherit'});
+    execSync(command);
 } catch(err) {
     Logger.error('Error during migration generating: ${err}');
     process.exit(1);  
