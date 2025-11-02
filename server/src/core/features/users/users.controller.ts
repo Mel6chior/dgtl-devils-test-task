@@ -11,7 +11,7 @@ import { UsersService } from './users.service';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Get('profile')
+  @Get()
   @ApiOperation({ summary: "Get user's profile"})
   @UseGuards(AuthGuard)
   async profile(@CurrentUser() user: TokenPayload){
